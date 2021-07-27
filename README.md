@@ -5,7 +5,7 @@
 ```python
 
 # K Means to find K clusters from unlabeled data /unsupervised learning
-#two dimensional array
+#two dimensional points
 data =[(x_0,y_0),...,(x_n,y_n)]
 #output
 labels =[c_0,...,c_n]
