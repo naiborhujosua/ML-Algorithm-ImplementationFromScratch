@@ -237,7 +237,7 @@ def update_params(beta_0,beta_other,gradient_beta_0,gradient_beta_other,learning
 
 
 
-# For Minibatch Gradient_descent for large dataset
+# Minibatch Gradient_descent for large dataset
 
 def compute_gradient_minibatch(x,y,beta_0,beta_other,m,n,batch_size):
     gradient_beta_0 =0
