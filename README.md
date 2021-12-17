@@ -226,7 +226,7 @@ def compute_gradient(x,y,beta_0,beta_other,m,n):
     return gradient_beta_0,gradient_beta_other
 
 def logistic_function(point,beta_0,beta_other):
-    return 1 /()1 +np.exp(-(beta_0 + point.dot(beta_other)))
+    return 1 /(1 +np.exp(-(beta_0 + point.dot(beta_other))))
 
 
 def update_params(beta_0,beta_other,gradient_beta_0,gradient_beta_other,learning_rate):
