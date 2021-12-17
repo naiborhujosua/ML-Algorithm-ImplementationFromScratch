@@ -150,8 +150,10 @@ class KNN:
  ##  Linear Regression Implementation From Scratch
  
  ```python 
+ import random 
  def linear_regression(x,y,iteration=100,learning_rate=0.01):
-    n,m =len(x[0],len(x))
+    # number of parameters(n) and m data points based on input data
+    n,m =len(x[0]),len(x)
     beta_0,beta_other = initialize_params(n)
     for _ in range(iterations):
         gradient_beta_0,gradient_beta_other =compute_gradient(x,y,beta_0,beta_other,n,m)
@@ -172,7 +174,7 @@ def compute_gradient(x,y,beta_0,beta_other,dimension,m):
     
     for i in range(m):
         y_i_hat =sum(x[i][j] *beta_other[j] for j in range(dimension))+beta_0
-        derror_dy =2 *(y[1]-y_i_hat)
+        derror_dy =2 *(y[i]-y_i_hat)
         for j in range(dimension):
             gradient_beta_other[j] +=derror_dy*x[i][j]/m
             
@@ -193,7 +195,7 @@ def update_params(beta_0,beta_other,gradient_beta_0,gradient_beta_other,learning
  ##  Logistic Regression Implementation From Scratch
  
  ```python 
- 
+
  def logistic_regression(x,y,iterations=100,learning_rate=0.01):
     m,n =len(x),len(x[0])
     beta_0,beta_other =initialize_params(n)
