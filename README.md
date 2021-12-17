@@ -4,6 +4,7 @@
 
 ```python
 
+import random
 # K Means to find K clusters from unlabeled data /unsupervised learning
 #two dimensional points
 data =[(x_0,y_0),...,(x_n,y_n)]
@@ -25,6 +26,7 @@ def main(data,k):
 
 
 def initialize_centroids(data,k):
+# all data points initialization
     x_min =y_min=float("inf")
     x_max =y_max=float("-inf")
     
@@ -37,8 +39,7 @@ def initialize_centroids(data,k):
     centroids =[]
     
     for i in range(k):
-        centroids.append([random_sample(x_min,x_max),random_sample(y_min,y_max =max(point[0],y_max)
-)])
+        centroids.append([random_sample(x_min,x_max),random_sample(y_min,y_max)])
         
     return centroids
 
@@ -94,7 +95,9 @@ def should_stop(old_centroids,new_centroids,threshold=1e-5):
 
 
 ```python
-
+# x = [[x_00,....,x_0n],[x_m0,...,x_mn]]
+# 2 two dimensional array where first array as number of point and 2nd array as number of features
+#k number of neighbors
 #x,y=train data
 #Regression
 class KNN:
@@ -107,7 +110,9 @@ class KNN:
     def train(self,x,y):
         self.x =x
         self.y =y
-        
+    
+    def distance(self,point_1,point_2):
+        return ((point_1[0]-point_2[0])**2 + (point_1[1]-point_2[1])**2)**0.5
  
     def predict(self,x,k) :
         distance_label =[
@@ -118,10 +123,6 @@ class KNN:
         
         return sum(label for _,label in neighbors /k)
     
-    def distance(point_1,point_2):
-    return ((point_1[0]-point_2[0])**2 + (point_1[1]-point_2[1])**2)**0.5
-
-
 #Classification
 from Counter  import Counter
 class KNN:
@@ -216,8 +217,8 @@ def compute_gradient(x,y,beta_0,beta_other,m,n):
     gradient_beta_0 =0
     gradient_beta_other =[0]*n
     
-    for i in enumerate(x):
-        pred = logistic_function(point_beta_0,beta_other)
+    for i,point in enumerate(x):
+        pred = logistic_function(point,beta_0,beta_other)
         
         for j,feature in enumerate(point):
             gradient_beta_other[j] +=(pred-y[i])*feature/m
@@ -256,3 +257,7 @@ def compute_gradient_minibatch(x,y,beta_0,beta_other,m,n,batch_size):
     return gradient_beta_0,gradient_beta_other
 
  ```
+ ## Notes
+ i = index of data points [1...m] <br>
+ j = index of features[1...n]
+ 
